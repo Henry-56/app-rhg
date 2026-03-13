@@ -28,8 +28,7 @@ export default function EmployeesPage() {
         {id: 5, tipo: 'Temporal'},
     ]
 
-    const Contrato = (id)=>{
-        console.log(id)
+    const Contrato = (id = 1)=>{
         const contrato = Tipo.find(t => t.id == id)
         return contrato ? contrato.tipo : 'N/A'
     }
