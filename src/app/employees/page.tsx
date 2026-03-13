@@ -19,7 +19,19 @@ export default function EmployeesPage() {
         avatar: 'https://i.pravatar.cc/150?u=' + Math.random(),
     })
 
-    console.log(selectedEmployee)
+    const Tipo = [
+        {id: 1, tipo: 'Temporal'},
+        {id: 2, tipo: 'Indefinido'},
+        {id: 3, tipo: 'Temporal'},
+        {id: 4, tipo: 'Practicas'},
+        {id: 5, tipo: 'Temporal'},
+    ]
+
+    const Contrato = (id)=>{
+        console.log(id)
+        const contrato = Tipo.find(t => t.id == id)
+        return contrato ? contrato.tipo : 'N/A'
+    }
 
     const filteredEmployees = employees.filter(
         emp =>
@@ -197,9 +209,9 @@ export default function EmployeesPage() {
 
                             <div className='grid grid-cols-1 gap-4 text-sm'>
                                 <div className='flex justify-between pb-2'>
-                                    <span className='text-slate-500'>ID</span>
-                                    <span className='font-medium text-slate-700'>
-                                        {selectedEmployee?.id}
+                                    <span className='text-slate-500'>Contrato</span>
+                                    <span className='font-medium text-slate-700 bg-slate-100 px-2 rounded-full'>
+                                        {Contrato(selectedEmployee?.id)}
                                     </span>
                                 </div>
 
