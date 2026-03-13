@@ -3,14 +3,15 @@
 import React, { useState } from 'react'
 import { Plus, Search, Filter, ExternalLink, Trash2, X } from 'lucide-react'
 import { useData } from '@/context/DataContext'
+import { Employee } from '@/lib/mock-data'
 
 export default function EmployeesPage() {
     const { employees, addEmployee, deleteEmployee } = useData()
     const [searchTerm, setSearchTerm] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isModalProfileOpen, setIsModalProfileOpen] = useState(false)
-    const [selectedEmployee, setSelectedEmployee] = useState({})
-    const [newEmployee, setNewEmployee] = useState({
+    const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null)
+    const [newEmployee, setNewEmployee] = useState<Omit<Employee, 'id'>>({
         name: '',
         position: '',
         department: '',
